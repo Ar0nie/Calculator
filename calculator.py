@@ -36,24 +36,21 @@ display.pack(pady=10, padx=10, fill="both")
 button_frame = tk.Frame(root)
 button_frame.pack(pady=10)
 
-buttons = {
-    "7", "8", "9", "/",
-    "4", "5", "6", "*",
-    "1", "2", "3", "-",
-    "C", "0", "=", "+"
-}
+buttons = [
+    ["7","8","9","/"],
+    ["4","5","6","*"],
+    ["1","2","3","-"],
+    ["C","0","=","+"]
+]
 
-row_val = 0
-col_val = 0
+# Ensure relative sizing.
 
-for button in buttons:
-    b = tk.Button(button_frame, text=button, font=("Arial", 18), relief="solid", borderwidth=1)
-    b.grid(row=row_val, column=col_val, ipadx=10, ipady=10, sticky="nsew")
-    b.bind("<Button-1>", button_click)
-    col_val += 1
-    if col_val > 3:
-        col_val = 0
-        row_val += 1
+for row in range(len(buttons)):
+    for col in range(len(buttons[row])):
+        button_text = buttons[row][col]
+        b = tk.Button(button_frame, text=button_text, font=("Arial", 18), relief="solid", borderwidth=1)
+        b.grid(row=row, column=col, ipadx=10, ipady=10, sticky="nsew")
+        b.bind("<Button-1>", button_click)
 
 for i in range(4):
     button_frame.grid_columnconfigure(i, weight=1)
