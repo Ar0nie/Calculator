@@ -43,7 +43,7 @@ buttons = [
     ["C","0","=","+"]
 ]
 
-# Ensure relative sizing.
+# Fix layout of columns, ensure correct placement of buttons.
 
 for row in range(len(buttons)):
     for col in range(len(buttons[row])):
@@ -51,6 +51,8 @@ for row in range(len(buttons)):
         b = tk.Button(button_frame, text=button_text, font=("Arial", 18), relief="solid", borderwidth=1)
         b.grid(row=row, column=col, ipadx=10, ipady=10, sticky="nsew")
         b.bind("<Button-1>", button_click)
+
+# Ensure relative sizing.
 
 for i in range(4):
     button_frame.grid_columnconfigure(i, weight=1)
